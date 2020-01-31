@@ -3,6 +3,9 @@
 .bg-mattBlackLight {
   background-color: #0c2424;
 }
+.bg-dark {
+  background-color: #0c2424!important;
+}
 .text-mattBlackLight {
   color: rgba(158, 211, 97, 0.808);
 }
@@ -36,7 +39,6 @@
 body {
   height: 1000px;
 }
-
 .wrapper {
   margin-top: 0rem;
 }
@@ -59,7 +61,6 @@ body {
   padding-top: 1.5rem;
   
 }
-
 .wrapper.active .sideMenu {
   transform: translateX(0);
 }
@@ -82,12 +83,9 @@ body {
 .nav-item .icon{
   color: whitesmoke
 }
-
 .nav-link .text {
   font-size: 1rem;
-  
 }
-
 /* font of KWh */
 .mb-2{
   font-size: 14px;
