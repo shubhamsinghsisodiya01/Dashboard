@@ -1,26 +1,37 @@
+// npm install jquery --save
+// import * as $ from 'jquery';
+// npm install @types/jquery@2.0.47
+
+// import * as $ from 'jquery';
+// import * as Highcharts from './highcharts';
 var chart1;
-$(document).ready(function(){ //ready 
+// $(document).ready();
+
+function minimize(){ //ready 
   $(".sideMenuToggler").on("click", function() { //onclick
       $(".wrapper").toggleClass("active"); //wrapper
     });
       var adjustSidebar = function() {
-      $(".sidebar").slimScroll({     //slimscroll is still not working
-        height: document.documentElement.clientHeight - $(".navbar").outerHeight() //navbar
-      });
+      // $(".sidebar").slimScroll({     //slimscroll is still not working
+      //   height: document.documentElement.clientHeight - $(".navbar").outerHeight() //navbar
+      // });
     };
     adjustSidebar();
     $(window).resize(function() {     //resize function
       adjustSidebar();
     });
-  });  
-  
+  }
+
 $(window).ready(call_me);
 function call_me() {
+  debugger
   load_chart_1();
+
 }
 
 function getData() {
   
+  var 
   point = undefined;
   $.ajax({
     type: 'GET',
@@ -54,16 +65,15 @@ function getData() {
     }
 });
   
-  
-  
 }
 function load_chart_1() {
+  debugger;
   chart1 =  {
     chart: {
       scrollablePlotArea: {
         minWidth: 700,
-        
       },
+      backgroundColor:'transparent'
     },
 
     // data: {
@@ -76,34 +86,17 @@ function load_chart_1() {
     //   }
       
     // },
-
-    series: [{
-      data: [],
-      
-   }],
     title: {
       text: ""
     },
-
-    chart: {
-      backgroundColor:'transparent',
-      // events: {
-      //   load: getData
-      // }
-    },
-    
-    
 
     xAxis: {
       type: 'datetime',
       labels: {
         hour: '%I %p',
-        minute: '%I:%M %p'
-          
+        minute: '%I:%M %p' 
       }
-      
   },
-
     yAxis: [
       {
         // left y axis
@@ -141,39 +134,35 @@ function load_chart_1() {
   exporting: {
     enabled: false
   },
-
-
     legend: {
       align: "left",
       verticalAlign: "top",
       borderWidth: 0
     },
-
     tooltip: {
       shared: true,
       crosshairs: true
     },
-
     plotOptions: {
       series: {
         cursor: "pointer",
         point: {
           events: {
-            click: function(e) {
-              hs.htmlExpand(null, {
-                pageOrigin: {
-                  x: e.pageX || e.clientX,
-                  y: e.pageY || e.clientY
-                },
-                headingText: this.series.name,
-                maincontentText:
-                  Superpower.dateFormat("%A, %b %e, %Y", this.x) +
-                  ":<br/> " +
-                  this.y +
-                  " sessions",
-                width: 200
-              });
-            }
+            // click: function(e) {
+            //   hs.htmlExpand(null, {
+            //     pageOrigin: {
+            //       x: e.pageX || e.clientX,
+            //       y: e.pageY || e.clientY
+            //     },
+            //     headingText: this.series.name,
+            //     maincontentText:
+            //       Superpower.dateFormat("%A, %b %e, %Y", this.x) +
+            //       ":<br/> " +
+            //       this.y +
+            //       " sessions",
+            //     width: 200
+            //   });
+            // }
           }
         },
         marker: {
@@ -181,7 +170,6 @@ function load_chart_1() {
         }
       }
     },
-    
     series: [
       {
         name: "All sessions",
@@ -195,18 +183,11 @@ function load_chart_1() {
       }
     ]
   };
-  
   getData();
-  debugger;
   Highcharts.chart("chart-container-1",chart1)
 }
-
-
 //  Consumption
-
-
 Highcharts.chart('container6', {
-
   chart: {
       type: 'gauge',
       plotBackgroundColor: null,
@@ -257,18 +238,15 @@ Highcharts.chart('container6', {
           innerRadius: '103%'
       }]
   },
-
   // the value axis
   yAxis: {
       min: 0,
       max: 20,
-
       minorTickInterval: 'auto',
       minorTickWidth: 1,
       minorTickLength: 10,
       minorTickPosition: 'inside',
       minorTickColor: '#666',
-
       tickPixelInterval: 30,
       tickWidth: 2,
       tickPosition: 'inside',
@@ -295,7 +273,6 @@ Highcharts.chart('container6', {
           color: '#DF5353' //red
       }]
   },
-
   series: [{
       name: 'Speed',
       data: [10],
@@ -303,7 +280,6 @@ Highcharts.chart('container6', {
           valueSuffix: 'Wh'
       }
   }]
-
 },
 // Add some life
 function (chart) {
@@ -312,21 +288,14 @@ function (chart) {
           var point = chart.series[0].points[0],
               newVal,
               inc = Math.round((Math.random() - 0.5) * 20);
-
           newVal = point.y + inc;
           if (newVal < 0 || newVal > 20) {
               newVal = point.y - inc;
           }
-
           point.update(newVal);
-
       }, 3000);
   }
 });
-
-
-
-
 //mixer
 Highcharts.chart('container2', {
   chart: {
@@ -345,10 +314,8 @@ Highcharts.chart('container2', {
       verticalAlign: 'top',
       x: 150,
       y: 100,
-      floating: false,
       borderWidth: 0,
-      floating: true,
-      
+      floating: true,   
   },
   xAxis: {
       categories: [
@@ -363,19 +330,21 @@ Highcharts.chart('container2', {
       plotBands: [{ // visualize the weekend
           from: 0,
           to: 0,
-          
-      }]
+      }],
+      title: {
+        text: 'Hours'
+    }
   },
   yAxis: {
       title: {
           text: 'kWh'
       }
   },
-  xAxis: {
-    title: {
-        text: 'Hours'
-    }
-},
+//   xAxis: {
+//     title: {
+//         text: 'Hours'
+//     }
+// },
   tooltip: {
       shared: true,
       valueSuffix: ' kWh'
@@ -389,7 +358,7 @@ Highcharts.chart('container2', {
       }
   },
   series: [{
-      name: 'Power',
+      name: '',
       data: [3, 5, 3, 6, 2,5, 1]
   }], 
 });
@@ -411,7 +380,6 @@ Highcharts.chart('container3', {
       verticalAlign: 'top',
       x: 150,
       y: 100,
-      floating: false,
       borderWidth: 0,
       floating: true,
       
@@ -430,18 +398,21 @@ Highcharts.chart('container3', {
           from: 0,
           to: 0,
           
-      }]
+      }],
+      title: {
+        text: 'Hours'
+    }
   },
   yAxis: {
       title: {
           text: 'kWh'
       }
   },
-  xAxis: {
-    title: {
-        text: 'Hours'
-    }
-},
+//   xAxis: {
+//     title: {
+//         text: 'Hours'
+//     }
+// },
   tooltip: {
       shared: true,
       valueSuffix: ' kWh'
@@ -455,11 +426,10 @@ Highcharts.chart('container3', {
       }
   },
   series: [{
-      name: 'Power',
+      name: '',
       data: [3, 5, 3, 4, 2, 7.5, 6]
   }], 
 });
-
 //chiller 1
 Highcharts.chart('container4', {
   chart: {
@@ -478,10 +448,8 @@ Highcharts.chart('container4', {
       verticalAlign: 'top',
       x: 150,
       y: 100,
-      floating: false,
       borderWidth: 0,
       floating: true,
-      
   },
   xAxis: {
       categories: [
@@ -495,20 +463,22 @@ Highcharts.chart('container4', {
       ],
       plotBands: [{ // visualize the weekend
           from: 0,
-          to: 0,
-          
-      }]
+          to: 0,       
+      }],
+      title: {
+        text: 'Hours'
+    }
   },
   yAxis: {
       title: {
           text: 'kWh'
       }
   },
-  xAxis: {
-    title: {
-        text: 'Hours'
-    }
-},
+//   xAxis: {
+//     title: {
+//         text: 'Hours'
+//     }
+// },
   tooltip: {
       shared: true,
       valueSuffix: ' kWh'
@@ -522,7 +492,7 @@ Highcharts.chart('container4', {
       }
   },
   series: [{
-      name: 'Power',
+      name: '',
       data: [3, 5, 1, 4, 2, 6, 5]
   }], 
 });
