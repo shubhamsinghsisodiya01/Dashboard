@@ -16,10 +16,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadScript('../../assets/js/myJsFile.js');
+    
     // debugger;
     // call_me()
   }
-
+  
   public loadScript(url: string) {
     const body = <HTMLDivElement> document.body;
     const script = document.createElement('script');

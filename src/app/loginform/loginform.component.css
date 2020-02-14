@@ -1,17 +1,10 @@
-:host {
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-#login_page  {
-	background-color: rgb(29, 66, 71);
-}
 
+body {
+    font-family: calibri;
+}
 div.input {
 	position: relative;
 }
-
 div.input label {
 	position: absolute;
 	top: 0;
@@ -20,13 +13,29 @@ div.input label {
 	background: white;
 	padding: 5px 2px;
 }
-
 div.input input {
-	padding: 10px 20px;
+	padding: 10px 8px;
 	font-size: 25px;
 	outline: 0;
 }
-
 div.input {
-	margin-top: 30px;
+	margin-top: 20px;
 }
+
+.bg-default {
+    background-color: #071a2c;
+    
+}
+
+  a.bg-default:hover,
+  a.bg-default:focus,
+  button.bg-default:hover,
+  button.bg-default:focus {
+	background-color: #0b1526 !important;
+  }
+  .bg-gradient-danger {
+    background: linear-gradient(87deg,#f5365c 0,#f56036 100%)!important;
+}
+/* welcome center */
+
+
