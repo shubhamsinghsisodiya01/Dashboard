@@ -24,50 +24,54 @@ function minimize(){ //ready
 
 $(window).ready(call_me);
 function call_me() {
-  debugger
   load_chart_1();
 
 }
 
-function getData() {
-  
-  var 
-  point = undefined;
+function getData(device) {
+  let point = [],
+  power = 0;
   $.ajax({
     type: 'GET',
-    url :'http://ec2-18-205-24-202.compute-1.amazonaws.com:8000/details',
+    url :'http://127.0.0.1:8000/details',
     dataType:'text json',
     async:false,
     success: function(response){
-      
-      // point = [["2109-10-11 12:00:00","567"],["2109-10-11",566]]
+      point = [["2109-10-11 12:00:00",567],["2109-10-11",566]]
        function loadData(response){
         const final = response.map(item =>{
           const newArray = []
-          
+          if(device=='chart1'){
+            power = parseInt(item.load1)
+          }
+          else if(device=='mixer'){
+            power = parseInt(item.load2)
+          }
+          else if(device=='oven'){
+            power = parseInt(item.load3)
+          }
+          else if(device=='chiller'){
+            power = parseInt(item.load4)
+          }
           newArray.push(item.date)
-          newArray.push(parseInt(item.power))
+          newArray.push(power)
+
           return newArray
         })
         return final
         }
         point = loadData(response)
-        // point = [["234", "2019-12-23 12:00:00"],["234879", "2019-12-24 12:00:00"]]
-        
-        if(chart1 != undefined){
-          var series = chart1.series[0];
-          series.data = point;
-        }
+        point = point.slice(0,10)
     },
     error:function(error){
         
         console.log("error",Error)
+        point =  []
     }
-});
-  
+  })
+  return point;
 }
 function load_chart_1() {
-  debugger;
   chart1 =  {
     chart: {
       scrollablePlotArea: {
@@ -174,6 +178,7 @@ function load_chart_1() {
       {
         name: "All sessions",
         lineWidth: 4,
+        data: getData('chart1'),
         marker: {
           radius: 4
         }
@@ -183,7 +188,6 @@ function load_chart_1() {
       }
     ]
   };
-  getData();
   Highcharts.chart("chart-container-1",chart1)
 }
 //  Consumption
@@ -296,6 +300,7 @@ function (chart) {
       }, 3000);
   }
 });
+
 //mixer
 Highcharts.chart('container2', {
   chart: {
@@ -359,7 +364,7 @@ Highcharts.chart('container2', {
   },
   series: [{
       name: '',
-      data: [3, 5, 3, 6, 2,5, 1]
+      data: getData('mixer')
   }], 
 });
 // Oven
@@ -427,7 +432,7 @@ Highcharts.chart('container3', {
   },
   series: [{
       name: '',
-      data: [3, 5, 3, 4, 2, 7.5, 6]
+      data: getData('oven')
   }], 
 });
 //chiller 1
@@ -493,6 +498,6 @@ Highcharts.chart('container4', {
   },
   series: [{
       name: '',
-      data: [3, 5, 1, 4, 2, 6, 5]
+      data: getData('chiller')
   }], 
 });

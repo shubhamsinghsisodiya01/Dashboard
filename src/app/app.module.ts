@@ -9,7 +9,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserService } from './user.service';
-import {AuthguardGuard} from './authguard.guard'
+import {AuthguardGuard} from './authguard.guard';
+import { ProductionPlanComponent } from './production-plan/production-plan.component';
+import { CostAnalComponent } from './cost-anal/cost-anal.component';
+import { MaintenanceSchComponent } from './maintenance-sch/maintenance-sch.component'
  
 
 const appRoutes:Routes = [
@@ -35,6 +38,9 @@ const appRoutes:Routes = [
     LoginformComponent,
     FooterComponent,
     DashboardComponent,
+    ProductionPlanComponent,
+    CostAnalComponent,
+    MaintenanceSchComponent,
   ],
   imports: [
     BrowserModule,

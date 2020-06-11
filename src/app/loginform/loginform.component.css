@@ -23,7 +23,7 @@ div.input {
 }
 
 .bg-default {
-    background-color: #071a2c;
+    background-color: #0b2047;
     
 }
 
@@ -31,11 +31,9 @@ div.input {
   a.bg-default:focus,
   button.bg-default:hover,
   button.bg-default:focus {
-	background-color: #0b1526 !important;
+	background-color: #566f99 !important;
   }
-  .bg-gradient-danger {
-    background: linear-gradient(87deg,#f5365c 0,#f56036 100%)!important;
-}
+ 
 /* welcome center */
 
 
