@@ -21,7 +21,7 @@ export class LoginformComponent implements OnInit {
   	var username = e.target.elements[0].value;
   	var password = e.target.elements[1].value;
   	
-  	if(username == 'admin' && password == 'admin') {
+  	if(username == 'user1' && password == 'user1') {
       this.user.setUserLoggedIn();
   		this.router.navigate(['dashboard']);
   	}
