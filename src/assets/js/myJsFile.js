@@ -43,6 +43,7 @@ function getData(device) {
           const newArray = []
           if(device=='chart1'){
             power = parseInt(item.load1)
+            
           }
           else if(device=='mixer'){
             power = parseInt(item.load2)
@@ -61,7 +62,7 @@ function getData(device) {
         return final
         }
         point = loadData(response)
-        point = point.slice(0,10)
+        point = point.slice(0,100)
     },
     error:function(error){
         
@@ -94,13 +95,7 @@ function load_chart_1() {
       text: ""
     },
 
-    xAxis: {
-      type: 'datetime',
-      labels: {
-        hour: '%I %p',
-        minute: '%I:%M %p' 
-      }
-  },
+    
     yAxis: [
       {
         // left y axis
