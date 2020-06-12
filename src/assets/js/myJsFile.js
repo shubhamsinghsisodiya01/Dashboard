@@ -33,7 +33,7 @@ function getData(device) {
   power = 0;
   $.ajax({
     type: 'GET',
-    url :'http://127.0.0.1:8000/details',
+    url :'http://ec2-54-171-208-17.eu-west-1.compute.amazonaws.com:8000/details',
     dataType:'text json',
     async:false,
     success: function(response){
