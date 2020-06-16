@@ -296,6 +296,10 @@ body {
   text-align: center;
   display: block;
 }
+.sidebar a:hover:not(.active) {
+  background-color: rgb(38, 194, 186);
+  color: white;
+}
 .sidebar .logo:after {
   content: "";
   position: absolute;
